@@ -27,7 +27,7 @@ ldif = {
   'gidNumber': 10001,
   'homeDirectory': '/srv/home/developer',
   'uid': 'developer',
-  'userPassword' : hashed(HASHED_SHA, '123')
+  'userPassword' : hashed(HASHED_SHA, '4linux')
 }
 
 # define algumas classes em um dicionário
