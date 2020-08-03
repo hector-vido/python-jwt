@@ -20,7 +20,7 @@ def auth():
   ldap = Connection(server, user='uid={},ou=users,dc=example,dc=com'.format(data['user']), password=data['password'])
   if ldap.bind():
     encoded_jwt = jwt.encode({'exp' : int(time.time()) + int(environ['SESSION_TIME']), 'user' : data['user'], 'role' : 'user'}, environ['JWT_SECRET'], algorithm='HS256')
-    return jsonify({'token' : str(encoded_jwt)})
+    return jsonify({'token' : encoded_jwt.decode('utf-8')})
   else:
     return make_response(jsonify({'message' : 'Usuário ou senha inválidos'}), 404)
 
